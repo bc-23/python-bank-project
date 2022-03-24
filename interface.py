@@ -71,12 +71,12 @@ def login():
         elif user_input1 == '2':
             customer_dict[account_no].withdrawl()
         elif user_input1 == '3':
-            mobile = int(input('Enter the mobile number of recipient: '))
+            mobile = int(input('Enter account holder cell phone number: '))
             if mobile in mobile_acc_link.keys():
                 secondary = mobile_acc_link[mobile]  # use mobile no. to get acct. no.
                 customer_dict[account_no].payment(customer_dict[secondary])
             else:
-                print('The mobile number you have enter does not have an account associated with it')
+                print('The phone number entered is not associated with any account.')
         elif user_input1 == '4':
             print('Logged Out')
             return
@@ -87,10 +87,10 @@ def login():
 
 
 while True:
-    user_input1 = input('''Press 1 for creating a new customer:
-Press 2 for logging in as an existing customer:
-Press 3 for displaying number of customers:
-Press 4 for exit\n''')
+    user_input1 = input('''Press 1 if you are a new customer:
+Press 2 if you are logging in as an existing customer:
+Press 3 to display number of customers currently signed on:
+Press 4 to exit\n''')
 
     if user_input1 == '1':
         print('Create user')
@@ -99,7 +99,7 @@ Press 4 for exit\n''')
         login()
     elif user_input1 == '3':
         print(''
-              'There currently', BankAccount.no_of_cust, 'customers in Corporate bank.')
+              'There currently', BankAccount.no_of_cust, 'customers in the bank.')
     elif user_input1 == '4':
         print('Exited')
         break

@@ -42,7 +42,7 @@ class BankAccount:
         if amount > 0:
             self.acc_balance = self.acc_balance + amount
             data1 = os.name + ',' + str(self.mobile_no) + ',' + str(self.acc_balance) + ',' + str(self.pin) + '\n'
-            f1 = open(filename, "a")
+            f1 = open(file, "a")
             f1.write(data1)
             f1.close()
             print(f'Transaction completed. Current Balance: ${self.acc_balance}')
@@ -66,17 +66,19 @@ class BankAccount:
         else:
             print('Invalid amount transaction aborted')
 
-#
-# if __name__ == '__main__':
-#     cust1 = BankAccount(name='Alex', mobile_no=4808435553, initial_depo=1000, pin=1234)
-#     cust2 = BankAccount(name='Betty', mobile_no=4808435553, initial_depo=2000, pin=1234)
-#     print('No. of customers is', BankAccount.no_of_cust)
-#     print(cust1.basic_details())
-#     print(cust2.basic_details())
-#     # cust1.deposit()
-#     # print(cust1.basic_details())
-#     # cust1.withdrawl()
-#     # print(cust1.basic_details())
-#     cust1.payment(cust2)
-#     print(cust2.basic_details())
+
+if __name__ == '__main__':
+    cust1 = BankAccount(name='Alex', mobile_no=4808435553, initial_depo=1000, pin=1234)
+
+    print('No. of customers is', BankAccount.no_of_cust)
+    print(cust1.basic_details())
+
+    cust1.deposit()
+    print(cust1.basic_details())
+
+    cust1.withdrawl()
+    print(cust1.basic_details())
+
+    # cust1.payment(cust2)
+    print(cust1.basic_details())
 
