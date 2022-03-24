@@ -2,11 +2,11 @@ from bankacct import BankAccount
 
 import csv
 import os
-global filename, data, raw_data, f
-filename='bank250.csv'
+global file, data, raw_data, f
+file='bank250.csv'
 
 
-f = open(filename, "r")
+f = open(file, "r")
 raw_data = f.read()
 raw_data = raw_data.split('\n')
 raw_data = list(filter(None, raw_data))
@@ -15,6 +15,7 @@ mobile_acc_link = {}  # use mobile no. as key and store account no. as value, fo
 
 
 def new_cust():
+    f1 = None
 
     name = input('Enter the name of customer: ')
 
@@ -36,9 +37,17 @@ def new_cust():
     customer_dict[customer.cust_acc_num] = customer  # acct. no. stored as key and object as value
     mobile_acc_link[customer.mobile_no] = customer.cust_acc_num  # mobile no. linked
     data1 = name+','+str(mobile_no)+','+str(initial_depo)+','+str(pin)+'\n'
-    f1 = open(filename, "a")
-    f1.write(data1)
-    f1.close()
+    with open(file, 'a') as f1:
+        f1.write(data1)
+
+    # try:
+    #     f1 = open(file, 'a')
+    #     f1.write(data1)
+    #
+    # finally:
+    #
+    #     if file:
+    #         f1.close()
     print('New User Created!')
     print(f'Welcome {customer.name} to Hometown Bank.\n{customer.cust_acc_num} is your account number')
 
@@ -54,9 +63,9 @@ def login():
         return
     while True:
         user_input1 = input('''Press 1 for deposit:
-Press 2 for withdrawl:
-Press 3 for money transfer:
-Press 4 to log out\n''')
+            Press 2 for withdrawl:
+            Press 3 for money transfer:
+            Press 4 to log out\n''')
         if user_input1 == '1':
             customer_dict[account_no].deposit()
         elif user_input1 == '2':

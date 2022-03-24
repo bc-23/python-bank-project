@@ -1,16 +1,16 @@
 import csv
 import os
-global filename, data, raw_data
-filename='bank250.csv'
+global file, data, raw_data
+file='bank250.csv'
 
-f = open(filename, "r")
+f = open(file, "r")
 raw_data = f.read()
 raw_data = raw_data.split('\n')
 raw_data = list(filter(None, raw_data))
 
 
 def file_write(self, list_data):
-    f1 = open(filename, "w")
+    f1 = open(file, "w")
     all_data = str()
     for data1 in list_data:
         all_data += data1+'\n'
@@ -66,17 +66,17 @@ class BankAccount:
         else:
             print('Invalid amount transaction aborted')
 
-
-if __name__ == '__main__':
-    cust1 = BankAccount(name='Alex', mobile_no=4808435553, initial_depo=1000, pin=1234)
-    cust2 = BankAccount(name='Betty', mobile_no=4808435553, initial_depo=2000, pin=1234)
-    print('No. of customers is', BankAccount.no_of_cust)
-    print(cust1.basic_details())
-    print(cust2.basic_details())
-    # cust1.deposit()
-    # print(cust1.basic_details())
-    # cust1.withdrawl()
-    # print(cust1.basic_details())
-    cust1.payment(cust2)
-    print(cust2.basic_details())
+#
+# if __name__ == '__main__':
+#     cust1 = BankAccount(name='Alex', mobile_no=4808435553, initial_depo=1000, pin=1234)
+#     cust2 = BankAccount(name='Betty', mobile_no=4808435553, initial_depo=2000, pin=1234)
+#     print('No. of customers is', BankAccount.no_of_cust)
+#     print(cust1.basic_details())
+#     print(cust2.basic_details())
+#     # cust1.deposit()
+#     # print(cust1.basic_details())
+#     # cust1.withdrawl()
+#     # print(cust1.basic_details())
+#     cust1.payment(cust2)
+#     print(cust2.basic_details())
 
