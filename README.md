@@ -1,2 +1,11 @@
 # python-bank-project
 bank
+# use python dictionaries to store key/value pairs
+# used to retriee value from key is known 
+# line 13 example
+# customer_dict = []
+# line 35:  customer_dict[customer.cust_acc_num] = customer
+# line 38: mobile_acc_link[customer.mobile_no] = customer.cust_acc_num 
+# line 58: if account_no in customer_dict.keys() and account_pin == customer_dict[account_no].pin:
+# line 59:  print(f'\n{customer_dict[account_no].name} Logged in')
+ # line 60: customer_dict[account-no].basic_details()
