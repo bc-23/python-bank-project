@@ -5,11 +5,15 @@ import os
 global file, data, raw_data, f
 file='bank250.csv'
 
-
+# lines 9 through 12 are only for testing
 f = open(file, "r")
 raw_data = f.read()
 raw_data = raw_data.split('\n')
 raw_data = list(filter(None, raw_data))
+
+# Creates 2 dictionaries (of key-value pairs)
+# key = account number
+# value = customer account/phone number
 customer_dict = {}  # use account no. as key and class object(customer account) as value
 mobile_acc_link = {}  # use mobile no. as key and store account no. as value, for linking purpose
 
@@ -63,9 +67,9 @@ def login():
         return
     while True:
         user_input1 = input('''Press 1 for deposit:
-            Press 2 for withdrawl:
-            Press 3 for money transfer:
-            Press 4 to log out\n''')
+Press 2 for withdrawl:
+Press 3 for money transfer:
+Press 4 to log out\n''')
         if user_input1 == '1':
             customer_dict[account_no].deposit()
         elif user_input1 == '2':
@@ -74,7 +78,7 @@ def login():
             mobile = int(input('Enter account holder cell phone number: '))
             if mobile in mobile_acc_link.keys():
                 secondary = mobile_acc_link[mobile]  # use mobile no. to get acct. no.
-                customer_dict[account_no].payment(customer_dict[secondary])
+                customer_dict[account_no].transfer(customer_dict[secondary])
             else:
                 print('The phone number entered is not associated with any account.')
         elif user_input1 == '4':
@@ -99,10 +103,10 @@ Press 4 to exit\n''')
         login()
     elif user_input1 == '3':
         print(''
-              'There currently', BankAccount.no_of_cust, 'customers in the bank.')
+              'There are currently', BankAccount.no_of_cust, 'customers in the bank.')
     elif user_input1 == '4':
-        print('Exited')
-        break
+         print('Exited')
+         break
     else:
         print('Invalid input try again')
     print('\n*************************************************************\n')
