@@ -10,7 +10,7 @@ raw_data = list(filter(None, raw_data))
 
 
 def file_write(self, list_data):
-    f1 = open(file, "w")
+    f1 = open(file, "a")
     all_data = str()
     for data1 in list_data:
         all_data += data1+'\n'
@@ -44,13 +44,12 @@ class BankAccount:
         amount = int(input('Enter the deposit amount: '))
         if amount > 0:
             self.acc_balance = self.acc_balance + amount
-            data1 = self.name + ',' + str(self.mobile_no) + ',' + str(self.acc_balance) + ',' + str(self.pin) + '\n'
-            f1 = open(file, "a")
-            f1.write(data1)
-
+            data1 = self.name + ',' + str(self.mobile_no) + ',' + str(self.acc_balance) + ',' + str(self.pin) + ',' \
+                + str(BankAccount.acc_num) + '\n'
+            with open(file, 'a') as f1:
+                f1.write(data1)
             print(f'Transaction completed. Current Balance: ${self.acc_balance}')
             print('============================================================')
-            f1.close()
         else:
             print('Invalid amount transaction aborted')
     # line 58 makes sure there is enough money in the account for withdraw
@@ -60,9 +59,10 @@ class BankAccount:
         amount = int(input('Enter the withdrawl amount: '))
         if self.acc_balance >= amount > 0:
             self.acc_balance = self.acc_balance - amount
-            data1 = self.name + ',' + str(self.mobile_no) + ',' + str(self.acc_balance) + ',' + str(self.pin) + '\n'
-            with open(file, 'a') as f1:
-                f1.write(data1)
+            data2 = self.name + ',' + str(self.mobile_no) + ',' + str(self.acc_balance) + ',' + str(self.pin) + ',' \
+                + str(BankAccount.acc_num)+'\n'
+            with open(file, 'a') as f2:
+                f2.write(data2)
             print(f'Transaction completed. Current Balance: ${self.acc_balance}')
             print('============================================================')
         else:
@@ -76,9 +76,10 @@ class BankAccount:
         if self.acc_balance >= amount > 0:
             self.acc_balance = self.acc_balance - amount
             other.acc_balance = other.acc_balance + amount
-            data1 = self.name + ',' + str(self.mobile_no) + ',' + str(self.acc_balance) + ',' + str(self.pin) + '\n'
-            with open(file, 'a') as f1:
-                f1.write(data1)
+            data3 = self.name + ',' + str(self.mobile_no) + ',' + str(self.acc_balance) + ',' + str(self.pin) + ',' + \
+                str(self.cust_acc_num) + '\n'
+            with open(file, 'a') as f3:
+                f3.write(data3)
             print(f'Transaction completed. Your current Balance: ${self.acc_balance}\n')
 
             print(f'Transaction completed. Recipient Balance: ${other.acc_balance}\n')

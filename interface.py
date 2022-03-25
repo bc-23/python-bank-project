@@ -40,7 +40,7 @@ def new_cust():
     customer = BankAccount(name=name, mobile_no=mobile_no, initial_depo=initial_depo, pin=pin)
     customer_dict[customer.cust_acc_num] = customer  # acct. no. stored as key and object as value
     mobile_acc_link[customer.mobile_no] = customer.cust_acc_num  # mobile no. linked
-    data1 = name+','+str(mobile_no)+','+str(initial_depo)+','+str(pin)+'\n'
+    data1 = name+','+str(mobile_no)+','+str(initial_depo)+','+str(pin)+','+str(customer.cust_acc_num)+'\n'
     with open(file, 'a') as f1:
         f1.write(data1)
 
