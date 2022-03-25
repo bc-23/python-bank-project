@@ -1,5 +1,9 @@
 # python-bank-project
 bank
+# followed steps to write data into a CSV file
+# step 1 used open() function to open the CSV file or writing (w mode) 
+# step 2 create a CSV writer object by calling the writer() function of the csv module.
+# step 3 write data to CSV file by calling the writerow() or writerows() method of the CSV writer object.
 # use python dictionaries to store key/value pairs
 # used to retriee value from key is known 
 # line 13 example
